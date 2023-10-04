@@ -1,0 +1,59 @@
+{
+    "sap.app": {
+        "id":"tcs.sap.ui.hm",
+        "type": "application",
+        "ach": "TCS-SAP-UI-HM",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": "i18n/i18n.properties" 
+    },
+    "sap.ui": {
+        "supportedThemes": ["sap_fiori_3","sap_fiori_3_dark","sap_horizon"],
+        "technology": "UI5",
+        "deviceTypes":{
+            "desktop": true,
+            "phone": true,
+            "tablet": true
+        },
+        "fullWidth": true
+    },
+    "sap.ui5":{
+        "dependencies": {
+            "minUI5Version": "1.140.0",
+            "libs": {
+                "sap.ui.core":{
+                    "minVersion": "1.140.0"
+                },
+                "sap.ui.layout":{
+                    "minVersion": "1.140.0"
+                },
+                "sap.m":{
+                    "minVersion": "1.140.0"
+                } 
+            }
+        },
+        "contentDensities": {"compact": true,"cozy": true },
+        "models": {
+            "":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "models/fruits.json",
+                "settings": {}
+            },
+            "prod":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "models/prod.json",
+                "settings": {}
+            },
+            "i18n":{
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleUrl": "i18n/i18n.properties"
+                }
+            }
+        }
+
+    }
+}

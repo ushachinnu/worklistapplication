@@ -1,0 +1,127 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" 
+xmlns:core="sap.ui.core"
+controllerName="tcs.sap.ui.hm.controller.View2">
+	<Page title="View 2" showNavButton="true" navButtonPress="onBack">
+		<!-- header -->
+		<!-- content -->
+		<ObjectHeader title="{name}" intro="{healthBenefit}" number="{price}" numberUnit="{curr}" icon="{image}">
+		</ObjectHeader>
+        <IconTabBar >
+            <items>
+                 <!-- Tab 1 -->
+                <IconTabFilter text="More info" icon="sap-icon://warning">
+                    <f:SimpleForm>
+                        <f:content>
+                        <Label text="Name"></Label>
+                        <Text text="{name}"></Text>
+                        <Label text="Color"></Label>
+                        <Text text="{color}"></Text>
+                        <Label text="Price"></Label>
+                        <Text text="{price} {curr}"></Text>
+                        <Label text="Availability"></Label>
+                        <ObjectStatus text="{path:'availability', formatter:'.formatter.getStatus'}"
+                        state="{path:'availability', formatter:'.formatter.getState'}">
+
+                        </ObjectStatus>
+                        </f:content>
+                    </f:SimpleForm>
+                </IconTabFilter>
+                <!-- tab 2 -->
+                <IconTabFilter text="Suppliers" icon="sap-icon://supplier">
+                <Table id="suppTab" items="{/supplier}">
+                    <columns>
+                        <Column >
+                            <header>
+                                <Label text="Name"></Label>
+                            </header>
+                        </Column> 
+                        <Column >
+                            <header>
+                                <Label text="City"></Label>
+                            </header>
+                        </Column>
+                        <Column minScreenWidth="Tablet">
+                            <header>
+                                <Label text="Since When"></Label>
+                            </header>
+                        </Column>
+                        <Column minScreenWidth="Tablet">
+                            <header>
+                                <Label text="Contact"></Label>
+                            </header>
+                        </Column>
+                        <!-- <Column >
+                            <header>
+                                <Label text="Stores and Speciality"></Label>
+                            </header>
+                        </Column> -->
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{name}"></Text>
+                                <Input value="{city}"></Input>
+                                <Text text="{sinceWhen}"></Text>
+                                <VBox >
+                                    <Text text="{person}"></Text>
+                                    <Text text="{contactNo}"></Text>
+                                </VBox>
+                                <!-- <HBox >
+                                    <Text text="{noOfStores} [{specialty/}]"></Text>
+                                     
+                                </HBox> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                </IconTabFilter>
+                <!-- tab 3 -->
+                <IconTabFilter text="Cities" icon="sap-icon://home">
+                <!-- Select allow mandatory to choose a value,else first value is default  -->
+                    <Select items="{/cities}">
+                        <items>
+                            <core:Item key="{name}" text="{name}"></core:Item>
+                        </items> 
+                    </Select>
+                    <!-- Combobox- allows an empty value to be entered manually -->
+                    <ComboBox items="{/cities}">
+                        <items>
+                            <core:Item key="{name}" text="{name}"></core:Item>
+                        </items> 
+                    </ComboBox>
+                    <!-- Multiple values can be selected -->
+                    <MultiComboBox items="{/cities}">
+                        <items>
+                            <core:Item key="{name}" text="{name}"></core:Item>
+                        </items> 
+                    </MultiComboBox>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+
+
+		<!--
+		<List id="idList" items="{prod>/ProductCollection}">
+		<items>
+		<ObjectListItem title="{prod>ProductId}{prod>Category}"
+		intro="{prod>MainCategory}{prod>Description}"
+		number="{prod>Quantity}{prod>UoM}"
+		numberUnit="{prod>Price}{prod>CurrencyCode}"
+		icon="{prod>ProductPicUrl}"></ObjectListItem>
+		</items>
+		</List>
+		-->
+		<!-- <Button text="Back" press="onBack"></Button> -->
+		<!-- footer -->
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Save" press="onSave" type="Accept">
+					</Button>
+					<Button text="Cancel" press="onCancel" type="Reject">
+					</Button>
+				
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
